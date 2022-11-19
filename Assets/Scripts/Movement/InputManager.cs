@@ -16,6 +16,10 @@ namespace UnityTutorial.Manager
 	    public bool Run {get; private set;}
 	    
 	    
+	    public bool Jump{get; private set;}//Own Buttons like THIS: [1]
+	    
+	    
+	    
 	    private InputActionMap _currentMap;
 	    
 	    private InputAction _moveAction;
@@ -24,8 +28,8 @@ namespace UnityTutorial.Manager
 	    
 	    private InputAction _runAction;
 	    
-	    //Press Button Action here
-	    
+	   
+	    private InputAction _jumpAction;  //Own InputAction here [2]
 	    
 	    
 	    private void Awake() 
@@ -36,15 +40,19 @@ namespace UnityTutorial.Manager
 	    	_moveAction = _currentMap.FindAction("Move");
 	    	_lookAction = _currentMap.FindAction("Look");
 	    	_runAction =  _currentMap.FindAction("Run");
+			_jumpAction = _currentMap.FindAction("Jump"); //Assign Own Button Action here [3]
+	    	
 	    	
 	    	
 	    	_moveAction.performed += onMove;
 	    	_lookAction.performed += onLook;
 	    	_runAction.performed += onRun;
+	    	_jumpAction.performed += onJump; //Own Button performs [4]
 	    	
 	    	_moveAction.canceled += onMove;
 	    	_lookAction.canceled += onLook;
 	    	_runAction.canceled += onRun;
+	    	_jumpAction.canceled += onJump; //Own Button cancels [5]
 	    }
 	    
 	    private void HideCursor()
@@ -72,8 +80,13 @@ namespace UnityTutorial.Manager
 	    {
 		    Run = context.ReadValueAsButton();
 	    }
-	    
-	    
+	    //defines what the Value is (with Input)
+	    private void onJump(InputAction.CallbackContext context) //If own Button is pressed [5]
+	    {
+
+	    		Jump = context.ReadValueAsButton();
+	    }
+		
 	    
 	    
 	
