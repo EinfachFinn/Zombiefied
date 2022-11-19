@@ -1,0 +1,129 @@
+/* ========== Editor Themes Plugin ==========*/
+/*            Auto Generated Code            */
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*v0.65*/
+
+.TabWindowBackground
+{
+	background-color: rgba(26, 26, 26, 1);
+}
+
+.ScrollViewAlt
+{
+	background-color: rgba(26, 26, 26, 1);
+}
+
+.label
+{
+	background-color: rgba(26, 26, 26, 1);
+}
+
+.dockHeader
+{
+	background-color: rgba(43, 43, 43, 1);
+}
+
+.TV LineBold
+{
+	background-color: rgba(43, 43, 43, 1);
+}
+
+.ToolbarDropDownToogleRight
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.ToolbarPopupLeft
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.ToolbarPopup
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.toolbarbutton
+{
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.PreToolbar
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.AppToolbar
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.GameViewBackground
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.CN EntryInfoSmall
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.Toolbar
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.toolbarbutton
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.toolbarbuttonRight
+{
+	background-color: rgba(48, 48, 48, 1);
+}
+
+.dragTab
+{
+	background-color: rgba(200, 81, 48, 1);
+}
+
+.dragtab first
+{
+	background-color: rgba(200, 81, 48, 1);
+}
+
+.dragtab-label
+{
+	background-color: rgba(84, 84, 147, 1);
+}
+
+.AppCommandLeft
+{
+	background-color: rgba(71, 71, 71, 1);
+}
+
+.AppCommandMid
+{
+	background-color: rgba(71, 71, 71, 1);
+}
+
+.AppCommand
+{
+	background-color: rgba(71, 71, 71, 1);
+}
+
+.AppToolbarButtonLeft
+{
+	background-color: rgba(71, 71, 71, 1);
+}
+
+.AppToolbarButtonRight
+{
+	background-color: rgba(71, 71, 71, 1);
+}
+
+.DropDown
+{
+	background-color: rgba(71, 71, 71, 1);
+}
