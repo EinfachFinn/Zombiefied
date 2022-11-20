@@ -25,7 +25,7 @@ public class PlayerInteract : MonoBehaviour
     private Interactable currentInteractable;
 
     // Update is called once per frame
-	void Update()
+	public void Update()
     { 
         //Shoot ray from Cam forward
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
@@ -47,13 +47,8 @@ public class PlayerInteract : MonoBehaviour
 		        //Draw InteractableRay
 		        Debug.DrawRay(ray.origin, ray.direction * distance, Color.green);
 		        currentInteractable.OnLook();
-		        
-		        if (Input.GetKeyDown(KeyCode.F))
-		        {
-			        currentInteractable.Interact();
+		    	
 
-
-		        }
 	        }
 	        else
 	        {
@@ -68,6 +63,11 @@ public class PlayerInteract : MonoBehaviour
         
 
     }
+    
+	public void Interact()
+	{
+		currentInteractable.Interact();
+	}
 
     
 }

@@ -9,36 +9,43 @@ public class PickUpAndDrop : MonoBehaviour
 	public Camera cam;
 	public float distance = 3f;
 	
-	[Header("ThisSlot")]
-	public bool isfull;
+	
+	
+	
+	[Header("Debug")]
+	public GameObject CurrentSlot;
+	public bool CurrentSlotIsfull;
 	
 	[Header("Current Weapon")]
 	private GameObject currentWeapon;
 	private Rigidbody rigidbody;
 	
+
+
+
 	
-    void Update()
-    {
-	    if (Input.GetKeyDown(KeyCode.E))
-	    {
-		    PickUp();
-	    }   
-	    else if (Input.GetKeyDown(KeyCode.Q))
-	    {
-		    Drop();
-	    }  
-    }
-    
-	void PickUp()
+	public void PickUp()
 	{
 		//checks if slot is full if(yes) do Drop() and ask again. if(no) do the PickUpStuff
-		if (isfull == true)
+		if(CurrentSlot.transform.childCount > 0)
 		{
+			Debug.Log("CurrentSlot is full");
 			Drop();
-			PickUp();
+			PickUpProcess();
 		}
 		else
 		{
+			PickUpProcess();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	public void PickUpProcess()
+	{
 			//Shoot Ray to detect
 			Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         
@@ -54,22 +61,25 @@ public class PickUpAndDrop : MonoBehaviour
 					//Disable Physics
 					currentWeapon.GetComponent<Rigidbody>().isKinematic = true;
 					currentWeapon.GetComponent<BoxCollider>().enabled = false;
+					currentWeapon.GetComponent<ProjectileGun>().enabled = true;
 					
 					//Make Child of Slot
-					currentWeapon.transform.SetParent(this.gameObject.transform);
+					currentWeapon.transform.SetParent(CurrentSlot.gameObject.transform);
 					//transform 
-					currentWeapon.transform.position = this.gameObject.transform.position;
-					currentWeapon.transform.rotation = this.gameObject.transform.rotation;
-					isfull = true;
-
+					currentWeapon.transform.position = CurrentSlot.gameObject.transform.position;
+					currentWeapon.transform.rotation = CurrentSlot.gameObject.transform.rotation;
+					CurrentSlotIsfull = true;
 				}
 			}
-		}
 	}
 	
-	void Drop()
-	{
 	
+	public void Drop()
+	{
+		CurrentSlot.transform.DetachChildren();
+		currentWeapon.GetComponent<Rigidbody>().isKinematic = false;
+		currentWeapon.GetComponent<BoxCollider>().enabled = true;
+		currentWeapon.GetComponent<ProjectileGun>().enabled = false;
 	}
 
 	
