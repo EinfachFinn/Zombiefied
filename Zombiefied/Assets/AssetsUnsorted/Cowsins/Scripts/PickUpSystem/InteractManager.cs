@@ -1,5 +1,5 @@
-/// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
+ï»¿/// <summary>
+/// This script belongs to cowsinsï¿½ as a part of the cowsinsï¿½ FPS Engine. All rights reserved. 
 /// </summary>
 using UnityEngine;
 using UnityEngine.Events;
@@ -124,6 +124,7 @@ public class InteractManager : MonoBehaviour
 
     private void EnableInteractionUI(Interactable interactable)
     {
+        interactable.interactable = true;
         interactable.interactable = true;
         // Current interactable is equal to the passed interactable value
         lookingAt = interactable.gameObject;

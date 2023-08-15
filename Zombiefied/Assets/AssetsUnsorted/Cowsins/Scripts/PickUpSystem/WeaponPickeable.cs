@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 namespace cowsins {
     public class WeaponPickeable : Pickeable
     {
@@ -47,7 +47,7 @@ namespace cowsins {
             inv.weapon = weapon;
             // Apply attachments to the weapon
             ApplyAttachments(inv);
-            //Since this slot is selected, let´s unholster it
+            //Since this slot is selected, letï¿½s unholster it
             inv.UnHolster(inv.inventory[inv.currentWeapon].gameObject,true);
             // Set bullets
             inv.inventory[inv.currentWeapon].GetComponent<WeaponIdentification>().bulletsLeftInMagazine = currentBullets;
@@ -55,7 +55,7 @@ namespace cowsins {
             //UI
             inv.slots[inv.currentWeapon].weapon = weapon;
             inv.slots[inv.currentWeapon].GetImage();
-            //Now, let´s set the new weapon graphics on the pickeable
+            //Now, letï¿½s set the new weapon graphics on the pickeable
             currentBullets = saveBulletsLeftInMagazine;
             totalBullets = saveTotalBullets;
 
@@ -83,7 +83,7 @@ namespace cowsins {
                     weaponPicked.transform.localPosition = weapon.weaponObject.transform.localPosition;
                     //Assign the weapon to the inventory
                     inv.inventory[i] = weaponPicked;
-                    //Since this slot is selected and it was empty, let´s unholster it
+                    //Since this slot is selected and it was empty, letï¿½s unholster it
                     if (inv.inventory[inv.currentWeapon] == inv.inventory[i])
                     {
                         inv.inventory[i].gameObject.SetActive(true);
@@ -106,11 +106,11 @@ namespace cowsins {
                     }
     #endif
 
-                    // Don´t return true
+                    // Donï¿½t return true
                     return false;
                 }
             }
-            // Inventory is full, we´ll check what to do then
+            // Inventory is full, weï¿½ll check what to do then
             return true;
 
         }

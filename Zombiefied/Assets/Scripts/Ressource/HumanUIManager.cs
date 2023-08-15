@@ -5,55 +5,130 @@ using UnityEngine.UI;
 using TMPro;
 public class HumanUIManager : MonoBehaviour
 {
-	public GameObject humanEntryPrefab; // Assign your UI entry prefab here
-	public Transform contentTransform; // Assign the content transform of the ScrollView here
-	public HumanManager humanManager; // Assign your HumanManager script here
-
-	public float entryHeight = 100f;
+	public HumanType Human;
+	public TMP_Text Name;
+	public TMP_Text Job;
+	public Slider Health;
+	public Slider Energy;
+	public Image Image;
 	
-	private void Start()
+	private MoneyManager MoneyManager;
+	private HumanManager HumanManager;
+	
+	void Start()
 	{
-		CreateUIEntries();
+		MoneyManager = FindObjectsOfType<MoneyManager>()[0];
+		HumanManager = FindObjectsOfType<HumanManager>()[0];
 	}
-
-	public void CreateUIEntries()
+	
+	public void LearnFarmer() //Food
 	{
-		foreach (var HumanInfo in humanManager.humansList)
+		if(MoneyManager.Cash > MoneyManager.Farmer)
+		{	
+			MoneyManager.Cash -= MoneyManager.Farmer;
+			Human.Farmer = true;
+			Human.Medic = false;
+			Human.Guard = false;
+			Human.Soldier = false;
+			Human.Sniper = false;
+			Human.Job = "Farmer";
+			Debug.Log("Farmer learned");
+			HumanManager.FindAndStoreHumans();
+		}
+		else
 		{
-			GameObject entry = Instantiate(humanEntryPrefab, contentTransform);
-
-			RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
-			entryRectTransform.anchoredPosition = new Vector2(0f, -entryHeight * contentTransform.childCount);
-
-			UpdateUIEntry(entry, HumanInfo);
+			Debug.Log("Not enough Money");
+		}
+		
+		
+	}
+	
+	
+	
+	public void LearnMedic() //Heal Guards (not Energy just health)
+	{
+		if(MoneyManager.Cash > MoneyManager.Medic)
+		{	
+			MoneyManager.Cash -= MoneyManager.Medic;
+			Human.Farmer = false;
+			Human.Medic = true;
+			Human.Guard = false;
+			Human.Soldier = false;
+			Human.Sniper = false;
+			Human.Job = "Medic";
+			HumanManager.FindAndStoreHumans();
+		}
+		else
+		{
+			Debug.Log("Not enough Money");
 		}
 	}
-
-	private void UpdateUIEntry(GameObject entry, HumanManager.HumanInfo HumanInfo)
+	
+	
+	
+	public void LearnGuard() //Melee defending
 	{
-		// Update TMP elements within the entry GameObject with HumanInfo values
-		TMP_Text healthText = entry.transform.Find("HealthText").GetComponent<TMP_Text>();
-		TMP_Text jobText = entry.transform.Find("JobText").GetComponent<TMP_Text>();
-		TMP_Text energyText = entry.transform.Find("EnergyText").GetComponent<TMP_Text>();
-		Slider healthSlider = entry.transform.Find("HealthSlider").GetComponent<Slider>();
-		Slider energySlider = entry.transform.Find("EnergySlider").GetComponent<Slider>();
-
-		healthText.text = "Health: " + HumanInfo.Health.ToString();
-		energyText.text = "Energy: " + HumanInfo.Energy.ToString();
-
-		healthSlider.value = HumanInfo.Health;
-		energySlider.value = HumanInfo.Energy;
-
-		healthSlider.onValueChanged.AddListener((value) =>
+		if(MoneyManager.Cash > MoneyManager.Guard)
+		{	
+			MoneyManager.Cash -= MoneyManager.Guard;
+			Human.Farmer = false;
+			Human.Medic = false;
+			Human.Guard = true;
+			Human.Soldier = false;
+			Human.Sniper = false;
+			Human.Job = "Guard";
+			HumanManager.FindAndStoreHumans();
+		}
+		else
 		{
-			HumanInfo.Health = (int)value;
-			healthText.text = "Health: " + HumanInfo.Health.ToString();
-		});
-
-		energySlider.onValueChanged.AddListener((value) =>
-		{
-			HumanInfo.Energy = value;
-			energyText.text = "Energy: " + HumanInfo.Energy.ToString();
-		});
+			Debug.Log("Not enough Money");
+		}
 	}
+	
+	
+	
+	public void LearnSoldier() //Rifle defending
+	{
+		if(MoneyManager.Cash > MoneyManager.Soldier)
+		{	
+			MoneyManager.Cash -= MoneyManager.Soldier;
+			Human.Farmer = false;
+			Human.Medic = false;
+			Human.Guard = false;
+			Human.Soldier = true;
+			Human.Sniper = false;
+			Human.Job = "Soldier";
+			HumanManager.FindAndStoreHumans();
+		}
+		else
+		{
+			Debug.Log("Not enough Money");
+		}
+		
+	}
+	
+	
+	
+
+	public void LearnSniper() //Sniper defending
+	{
+		if(MoneyManager.Cash > MoneyManager.Sniper)
+		{	
+			MoneyManager.Cash -= MoneyManager.Sniper;
+			Human.Farmer = false;
+			Human.Medic = false;
+			Human.Guard = false;
+			Human.Soldier = false;
+			Human.Sniper = true;
+			Human.Job = "Sniper";
+			HumanManager.FindAndStoreHumans();
+		}
+		else
+		{
+			Debug.Log("Not enough Money");
+		}
+	}
+	
+	
+	
 }

@@ -1,4 +1,4 @@
-/// <summary>
+﻿/// <summary>
 /// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
 /// </summary>
 using System.Collections;
@@ -9,6 +9,7 @@ using cowsins;
 using UnityEditor.Presets;
 #endif
 
+	
 #region others
 [System.Serializable]
 public class Events
@@ -397,7 +398,7 @@ public class WeaponController : MonoBehaviour
 
         foreach (var c in col)
         {
-            if (c.CompareTag("Critical") || c.CompareTag("BodyShot"))
+	        if (c.CompareTag("Critical") || c.CompareTag("BodyShot") || c.CompareTag("LegShot"))
             {
                 CowsinsUtilities.GatherDamageableParent(c.transform).Damage(dmg);
                 break; 
@@ -477,8 +478,11 @@ public class WeaponController : MonoBehaviour
                 if (weapon != null) impactBullet = Instantiate(weapon.bulletHoleImpact.woodImpact, h.point, Quaternion.identity);
                 break;
             case int l when l == LayerMask.NameToLayer("Enemy"):
-                impact = Instantiate(effects.enemyImpact, h.point, Quaternion.identity); // Enemy
-                impact.transform.rotation = Quaternion.LookRotation(h.normal);
+	            impact = Instantiate(effects.enemyImpact, h.point, Quaternion.identity); // Enemy
+//make the bullethole follow the object	            
+	            impact.transform.SetParent(h.collider.transform);
+	        
+	            impact.transform.rotation = Quaternion.LookRotation(h.normal);
                 if (weapon != null) impactBullet = Instantiate(weapon.bulletHoleImpact.enemyImpact, h.point, Quaternion.identity);
                 break;
         }
@@ -496,15 +500,23 @@ public class WeaponController : MonoBehaviour
         }
         float finalDamage = damage * GetDistanceDamageReduction(h.collider.transform); 
 
-        // Check if a head shot was landed
+	    // Check if a head shot was landed
+	    if (h.collider.gameObject.CompareTag("LegShot"))
+	    {
+	    	CowsinsUtilities.GatherDamageableParent(h.collider.transform).Damage(finalDamage);
+		    h.collider.GetComponents<LegShot>()[0].LegHasBeenShot();
+		    Debug.Log("Leg has been shot");
+	    }
         if (h.collider.gameObject.CompareTag("Critical"))
         {
             CowsinsUtilities.GatherDamageableParent(h.collider.transform).Damage(finalDamage * weapon.criticalDamageMultiplier);
+	        Debug.Log("Critical has been shot");
         }
         // Check if a body shot was landed ( for children colliders )
         else if(h.collider.gameObject.CompareTag("BodyShot"))
         {
-            CowsinsUtilities.GatherDamageableParent(h.collider.transform).Damage(finalDamage);
+	        CowsinsUtilities.GatherDamageableParent(h.collider.transform).Damage(finalDamage);
+	        Debug.Log("Body has been shot");
         }
         // Check if the collision just comes from the parent
         else if (h.collider.GetComponent<IDamageable>() != null)
@@ -860,7 +872,7 @@ public class WeaponController : MonoBehaviour
         }
         // Detect enemies on aiming
         RaycastHit hit_;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit_, weapon.bulletRange) && hit_.transform.CompareTag("Enemy") || Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit_, weapon.bulletRange) && hit_.transform.CompareTag("Critical"))
+	    if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit_, weapon.bulletRange) && hit_.transform.CompareTag("Enemy") || Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit_, weapon.bulletRange) && hit_.transform.CompareTag("LegShot"))
             UIController.instance.crosshair.SpotEnemy(true);
         else UIController.instance.crosshair.SpotEnemy(false);
     }

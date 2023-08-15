@@ -1,5 +1,6 @@
+ï»¿/// <summary>
 /// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
+/// This script belongs to cowsinsï¿½ as a part of the cowsinsï¿½ FPS Engine. All rights reserved. 
 /// </summary>
 using UnityEngine;
 namespace cowsins {
@@ -50,10 +51,17 @@ public class Bullet : MonoBehaviour
             }
             else if (other.CompareTag("BodyShot"))
             {
-                CowsinsUtilities.GatherDamageableParent(other.transform).Damage(damage);
-                DestroyProjectile();
-                projectileHasAlreadyHit = true;
-                return;
+	            CowsinsUtilities.GatherDamageableParent(other.transform).Damage(damage);
+	            DestroyProjectile();
+	            projectileHasAlreadyHit = true;
+	            return;
+            }
+            else if (other.CompareTag("LegShot"))
+            {
+	            CowsinsUtilities.GatherDamageableParent(other.transform).Damage(damage);
+	            DestroyProjectile();
+	            projectileHasAlreadyHit = true;
+	            return;
             }
             else if (other.GetComponent<IDamageable>() !=null && !other.CompareTag("Player"))
             {

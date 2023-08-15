@@ -1,5 +1,5 @@
-/// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
+ï»¿/// <summary>
+/// This script belongs to cowsinsï¿½ as a part of the cowsinsï¿½ FPS Engine. All rights reserved. 
 /// </summary>
 #if UNITY_EDITOR
 using UnityEditor;
@@ -125,12 +125,17 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
     public virtual void Die()
     {
-        // Custom event on damaged
-        events.OnDeath.Invoke();
+	    Debug.Log("Dead");
+	    gameObject.GetComponent<ZombieAI>().Dead.Invoke();
+	    gameObject.GetComponent<ZombieDie>().StartRemoveProcess();
+	    /*/
+	    // Custom event on damaged
+	    events.OnDeath.Invoke();
 
-        // Does it display killfeed on death? 
-        UIEvents.onEnemyKilled.Invoke(_name);
-        Destroy(this.gameObject);
+	    // Does it display killfeed on death? 
+	    UIEvents.onEnemyKilled.Invoke(_name);
+	    Destroy(this.gameObject);
+	    /*/
     }
 }
 #if UNITY_EDITOR

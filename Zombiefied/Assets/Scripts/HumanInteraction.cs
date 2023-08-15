@@ -24,6 +24,7 @@ public class HumanInteraction : Interactable
 		follow = false;
 		human = GetComponent<HumanType>();
 		NavMesh = GetComponent<NavMeshAgent>();
+		Player = GameObject.FindGameObjectWithTag("MainCamera");
 	
 	}
 
