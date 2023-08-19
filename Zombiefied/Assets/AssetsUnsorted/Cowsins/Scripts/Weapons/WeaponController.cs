@@ -509,6 +509,7 @@ public class WeaponController : MonoBehaviour
 	    }
         if (h.collider.gameObject.CompareTag("Critical"))
         {
+        	h.collider.transform.localScale *= 0.001f;
             CowsinsUtilities.GatherDamageableParent(h.collider.transform).Damage(finalDamage * weapon.criticalDamageMultiplier);
 	        Debug.Log("Critical has been shot");
         }

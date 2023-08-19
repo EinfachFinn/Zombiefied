@@ -64,7 +64,7 @@ public class ZombieAI : MonoBehaviour
 		Gizmos.DrawWireSphere(transform.position, AttackRange);
 		Gizmos.color = Color.blue;
 		Gizmos.DrawWireSphere(transform.position, minDistance);
-		Gizmos.color = Color.blue;
+		Gizmos.color = Color.green;
 		Gizmos.DrawWireSphere(transform.position, minDistancePlayer);
 		
 	}

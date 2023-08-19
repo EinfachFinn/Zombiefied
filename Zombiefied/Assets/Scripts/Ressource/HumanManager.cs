@@ -69,7 +69,7 @@ public class HumanManager : MonoBehaviour
 				Working = human.Working,
 				Energy = human.Energy,
 				Job = human.Job,
-				
+
 				Farmer = human.Farmer,
 				Medic = human.Medic,
 				Guard = human.Guard,
