@@ -12,6 +12,19 @@ TagManager:
   - BodyShot
   - LegShot
   - HouseTarget
+  - UnsassignesHuman
+  - MedicBuilding
+  - SoldierBuilding
+  - SniperBuilding
+  - FarmerBuilding
+  - HumanBedBuilding
+  - GuardBuilding
+  - Farmer
+  - Medic
+  - Guard
+  - Soldier
+  - Sniper
+  - UnassignedHuman
   layers:
   - Default
   - TransparentFX

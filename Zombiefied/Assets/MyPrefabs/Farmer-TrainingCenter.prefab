@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 2571795671797305101}
   m_Layer: 0
   m_Name: Farmer-TrainingCenter
-  m_TagString: Untagged
+  m_TagString: FarmerBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

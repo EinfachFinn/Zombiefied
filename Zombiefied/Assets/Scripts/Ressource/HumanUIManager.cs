@@ -15,8 +15,17 @@ public class HumanUIManager : MonoBehaviour
 	private MoneyManager MoneyManager;
 	private HumanManager HumanManager;
 	
+	
+	[Header("Buttons")]
+	public GameObject Farmer;
+	public GameObject Medic;
+	public GameObject Guard;
+	public GameObject Soldier;
+	public GameObject Sniper;
+	
 	void Start()
 	{
+		
 		MoneyManager = FindObjectsOfType<MoneyManager>()[0];
 		HumanManager = FindObjectsOfType<HumanManager>()[0];
 	}
@@ -33,7 +42,15 @@ public class HumanUIManager : MonoBehaviour
 			Human.Sniper = false;
 			Human.Job = "Farmer";
 			Debug.Log("Farmer learned");
+			Human.gameObject.tag ="Farmer";
+
+			Human.transform.GetComponent<Job_Farmer>().enabled = true;
+			Human.transform.GetComponent<Job_Guard>().enabled = false;
+			Human.transform.GetComponent<Job_Medic>().enabled = false;
+			Human.transform.GetComponent<Job_Sniper>().enabled = false;
+			Human.transform.GetComponent<Job_Soldier>().enabled = false;
 			HumanManager.FindAndStoreHumans();
+
 		}
 		else
 		{
@@ -56,7 +73,14 @@ public class HumanUIManager : MonoBehaviour
 			Human.Soldier = false;
 			Human.Sniper = false;
 			Human.Job = "Medic";
+			Human.gameObject.tag ="Medic";
+			Human.transform.GetComponent<Job_Farmer>().enabled = false;
+			Human.transform.GetComponent<Job_Guard>().enabled = false;
+			Human.transform.GetComponent<Job_Medic>().enabled = true;
+			Human.transform.GetComponent<Job_Sniper>().enabled = false;
+			Human.transform.GetComponent<Job_Soldier>().enabled = false;
 			HumanManager.FindAndStoreHumans();
+
 		}
 		else
 		{
@@ -77,6 +101,12 @@ public class HumanUIManager : MonoBehaviour
 			Human.Soldier = false;
 			Human.Sniper = false;
 			Human.Job = "Guard";
+			Human.gameObject.tag="Guard";
+			Human.transform.GetComponent<Job_Farmer>().enabled = false;
+			Human.transform.GetComponent<Job_Guard>().enabled = true;
+			Human.transform.GetComponent<Job_Medic>().enabled = false;
+			Human.transform.GetComponent<Job_Sniper>().enabled = false;
+			Human.transform.GetComponent<Job_Soldier>().enabled = false;
 			HumanManager.FindAndStoreHumans();
 		}
 		else
@@ -98,6 +128,12 @@ public class HumanUIManager : MonoBehaviour
 			Human.Soldier = true;
 			Human.Sniper = false;
 			Human.Job = "Soldier";
+			Human.gameObject.tag="Soldier";
+			Human.transform.GetComponent<Job_Farmer>().enabled = false;
+			Human.transform.GetComponent<Job_Guard>().enabled = false;
+			Human.transform.GetComponent<Job_Medic>().enabled = false;
+			Human.transform.GetComponent<Job_Sniper>().enabled = false;
+			Human.transform.GetComponent<Job_Soldier>().enabled = true;
 			HumanManager.FindAndStoreHumans();
 		}
 		else
@@ -121,6 +157,12 @@ public class HumanUIManager : MonoBehaviour
 			Human.Soldier = false;
 			Human.Sniper = true;
 			Human.Job = "Sniper";
+			Human.gameObject.tag="Sniper";
+			Human.transform.GetComponent<Job_Farmer>().enabled = false;
+			Human.transform.GetComponent<Job_Guard>().enabled = false;
+			Human.transform.GetComponent<Job_Medic>().enabled = false;
+			Human.transform.GetComponent<Job_Sniper>().enabled = true;
+			Human.transform.GetComponent<Job_Soldier>().enabled = false;
 			HumanManager.FindAndStoreHumans();
 		}
 		else

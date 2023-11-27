@@ -19,12 +19,12 @@ public class HumanInteraction : Interactable
 	[SerializeField]
 	private bool follow;
 	
-	void Start()
+	void Enabled()
 	{
 		follow = false;
 		human = GetComponent<HumanType>();
 		NavMesh = GetComponent<NavMeshAgent>();
-		Player = GameObject.FindGameObjectWithTag("MainCamera");
+		Player = GameObject.FindGameObjectsWithTag("MainCamera")[1];
 	
 	}
 

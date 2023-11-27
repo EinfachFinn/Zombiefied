@@ -15,9 +15,14 @@ GameObject:
   - component: {fileID: 5573344341911111594}
   - component: {fileID: 6545043957692843703}
   - component: {fileID: 5253042805339671820}
+  - component: {fileID: 6276767508426056971}
+  - component: {fileID: 1080437457959840456}
+  - component: {fileID: 5214686382208755487}
+  - component: {fileID: 3421889316917788601}
+  - component: {fileID: 1242976114192554839}
   m_Layer: 9
   m_Name: Human
-  m_TagString: Untagged
+  m_TagString: UnassignedHuman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,12 +36,12 @@ Transform:
   m_GameObject: {fileID: 1092161915157630133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.6438956, y: 1.95, z: -15}
-  m_LocalScale: {x: 1, y: 1.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1266896568498784740}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1371567199626389362
 MeshFilter:
@@ -123,11 +128,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e7b3a2a9444b545a6167f60a41d62d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
+  Image: {fileID: 0}
+  Gender: 0
   Health: 100
   Energy: 100
   Working: 0
-  Job: 
   Jobpoint: {fileID: 0}
+  Job: 
+  Farmer: 0
+  Medic: 0
+  Guard: 0
+  Soldier: 0
+  Sniper: 0
+  BoomBoy: 0
+  RandomInf: {fileID: 7093869656249484468, guid: b41e49daf6d204d409e2ee6fc479f03a, type: 3}
 --- !u!195 &6545043957692843703
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -164,9 +179,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 0
   interactText: Follow You
+  Player: {fileID: 0}
   talkcounter: 0
   follow: 0
-  Player: {fileID: 0}
+--- !u!114 &6276767508426056971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092161915157630133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5795f755232804145b4c5b10b1e4151b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1080437457959840456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092161915157630133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b3489bce38fb744bfc78028f4873d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackInterval: 3
+  detectionRange: 10
+  zombies: []
+  currentTarget: {fileID: 0}
+  lastAttackTime: 0
+--- !u!114 &5214686382208755487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092161915157630133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976d87e4fb9e3a34297ae0d40f97570b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3421889316917788601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092161915157630133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fee33d80c8ba14190382ad270b4b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1242976114192554839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092161915157630133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f47065824afbb49ac888bda382c1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  rotationSpeed: 5
+  fireRate: 1
+  bulletSpeed: 100
+  maxBulletDistance: 100
+  Damage: 0
 --- !u!1 &4110005521644856784
 GameObject:
   m_ObjectHideFlags: 0

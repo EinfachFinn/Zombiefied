@@ -2084,6 +2084,11 @@ MonoBehaviour:
   Health: {fileID: 3995355284696513221}
   Energy: {fileID: 3547725413971621685}
   Image: {fileID: 0}
+  Farmer: {fileID: 8191898060494652144}
+  Medic: {fileID: 6043390031055034994}
+  Guard: {fileID: 5330184829145444717}
+  Soldier: {fileID: 4862204776625151298}
+  Sniper: {fileID: 5539564470416691288}
 --- !u!1 &4862204776625151298
 GameObject:
   m_ObjectHideFlags: 0

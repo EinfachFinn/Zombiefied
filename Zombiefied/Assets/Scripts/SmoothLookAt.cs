@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 public class SmoothLookAt : MonoBehaviour
 {
 	public Transform target; // The target object to look at horizontally
@@ -8,7 +9,10 @@ public class SmoothLookAt : MonoBehaviour
 	public float rotationStopThreshold = 5.0f; // Horizontal angle range within which rotation stops
 	private float range = 5.0f; // Speed of rotation
 
-
+	void Start()
+	{
+		target = GameObject.FindGameObjectWithTag("MainCamera").transform;
+	}
 	private void Update()
 	{
 		if (target != null && Vector3.Distance(target.position, transform.position) < range)

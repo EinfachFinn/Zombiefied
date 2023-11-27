@@ -14,6 +14,14 @@ public class MoneyManager : MonoBehaviour
 	public int Soldier = 2000;
 	public int Sniper = 5000;
 
+
+	public int BedBuilding = 2000;
+	public int FarmerBuilding = 100;
+	public int MedicBuilding = 500;
+	public int GuardBuilding = 1000;
+	public int SoldierBuilding = 2000;
+	public int SniperBuilding = 5000;
+	
 	private void Start()
 	{
 

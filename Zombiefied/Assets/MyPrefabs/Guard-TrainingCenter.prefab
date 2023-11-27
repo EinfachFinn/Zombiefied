@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 4848275689588419104}
   m_Layer: 0
   m_Name: Guard-TrainingCenter
-  m_TagString: Untagged
+  m_TagString: GuardBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

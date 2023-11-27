@@ -26,6 +26,11 @@ public class HumanManager : MonoBehaviour
 
 	public List<HumanInfo> humansList = new List<HumanInfo>();
 	
+	public JobManager JobManager;
+	[SerializeField]
+	private Transform HumanSpawnpoint;
+	[SerializeField]
+	private GameObject humanPrefab;
 	[SerializeField]
 	private GameObject humanEntryPrefab; //HumanUI PRefab
 	[SerializeField]
@@ -38,10 +43,12 @@ public class HumanManager : MonoBehaviour
 	{
 
 		FindAndStoreHumans();
+		DeleteHuman();
 	}
 
 	public void FindAndStoreHumans()
 	{
+		JobManager.UpdateCount();
 		//Clear List so it doesnt add the same things 2 time
 		humansList.Clear();
 		
@@ -55,6 +62,7 @@ public class HumanManager : MonoBehaviour
 		//add human to list
 		
 		HumanType[] humans = FindObjectsOfType<HumanType>();
+
 
 		foreach (HumanType human in humans)
 		{
@@ -90,13 +98,106 @@ public class HumanManager : MonoBehaviour
 			entry.GetComponent<HumanUIManager>().Energy.value = human.Energy;
 			entry.GetComponent<HumanUIManager>().Job.text = human.Job;
 			entry.GetComponent<HumanUIManager>().Human = human;
+			
+			
 			RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
 			entryRectTransform.anchoredPosition = new Vector2(0f, -entryHeight * humanEntryList.childCount);
+				
+			JobManager.UpdateCount();
+			
+			
+			if(JobManager.FarmerCount < JobManager.FarmerBuildingCount*JobManager.FarmerBuildingMultiplikator)
+			{
+				entry.GetComponent<HumanUIManager>().Farmer.SetActive(true);
+			}
+			else
+			{
+				entry.GetComponent<HumanUIManager>().Farmer.SetActive(false);
+			}
 			
 			
 			
+			if(JobManager.MedicCount < JobManager.MedicBuildingCount*JobManager.MedicBuildingMultiplikator)
+			{
+				entry.GetComponent<HumanUIManager>().Medic.SetActive(true);
+			}
+			else
+			{
+				entry.GetComponent<HumanUIManager>().Medic.SetActive(false);
+			}
+			
+			
+			
+			
+			if(JobManager.GuardCount < JobManager.GuardBuildingCount*JobManager.GuardBuildingMultiplikator)
+			{
+				entry.GetComponent<HumanUIManager>().Guard.SetActive(true);
+			}
+			else
+			{
+				entry.GetComponent<HumanUIManager>().Guard.SetActive(false);
+			}
+			
+			
+			
+			
+			if(JobManager.SoldierCount < JobManager.SoldierBuildingCount*JobManager.SoldierBuildingMultiplikator)
+			{
+				entry.GetComponent<HumanUIManager>().Soldier.SetActive(true);
+			}
+			else
+			{
+				entry.GetComponent<HumanUIManager>().Soldier.SetActive(false);
+			}
+			
+			
+			
+			
+			if(JobManager.SniperCount < JobManager.SniperBuildingCount*JobManager.SniperBuildingMultiplikator)
+			{
+				entry.GetComponent<HumanUIManager>().Sniper.SetActive(true);
+			}
+			else
+			{
+				entry.GetComponent<HumanUIManager>().Sniper.SetActive(false);
+			}
+		}
+			
+			
+			
+		//Not for each entry
+	
+	}
+		
+	
+	public void SpawnHuman()
+	{
+		
+		if(JobManager.HumanCount < JobManager.HumanBedCount)
+		{	
+			GameObject instantiatedPrefab = Instantiate(humanPrefab, HumanSpawnpoint.position, HumanSpawnpoint.rotation);	
+			FindAndStoreHumans();
+		}
+			
+	}
+	public void DeleteHuman()
+	{	
+		Debug.Log("HumanCount ist:   " + JobManager.HumanCount + "         " + JobManager.HumanBedCount + "dürfen es eigentlich sein");
+		if(JobManager.HumanCount>JobManager.HumanBedCount)
+		{
+			int Number = JobManager.HumanCount -JobManager.HumanBedCount;
+			Debug.Log(Number);
+			foreach(HumanInfo human in humansList.GetRange(0, Number))
+			{
+				Destroy(human.humanScript.gameObject);
+				humansList.Remove(human);
+			}
+			//FindAndStoreHumans();
 		}
 	}
-	
+
+
+
+
 
 }

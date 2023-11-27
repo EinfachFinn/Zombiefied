@@ -71,8 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1201497d178d720428fea88db56751a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  Delay: 2
 --- !u!114 &3003646938587871649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +95,7 @@ MonoBehaviour:
   CrawlerSpeed: 0.5
   RunnerType: 0
   WalkerType: 1
-  CrawlerType: 0
+  CrawlerType: 1
   Dead:
     m_PersistentCalls:
       m_Calls:
